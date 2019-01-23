@@ -1,0 +1,108 @@
+try
+            {
+                File f=new File(CUsersMadhur BhardwajDesktopensem.xls);
+                Workbook wb=Workbook.getWorkbook(f);
+                Sheet s=wb.getSheet(0);
+                int rows=s.getRows();
+                int cols=s.getColumns();
+                int temp=(cols-1)2;
+                 Random r=new Random();
+                 
+                 ArrayListInteger z=new ArrayListInteger();
+                 double maxacc=0;
+                 ArrayListInteger best=new ArrayListInteger();
+                 ArrayListInteger actual=new ArrayListInteger();
+                 
+                 for(int i=1;irows;i++)
+                {
+                  
+                        Cell c=s.getCell(0,i);
+                        actual.add(Integer.parseInt(c.getContents()));
+                }
+                 
+                 for(int i=0;i1111;i++)
+                {
+                    int x=((r.nextInt(temp+1))2)+1; 
+                    for(int j=0;jx;j++)
+                    {
+                        while(true)
+                        {
+                           int y=r.nextInt(cols-1)+1;
+                            
+                           if(!z.contains(y))
+                           {
+                               z.add(y);
+                               break;
+                           }
+                        }
+                    }
+                    
+                    ArrayListArrayListInteger test=new ArrayListArrayListInteger();
+                    {
+                         for(int j=1;jrows;j++)
+                        {
+                            ArrayListInteger arr=new ArrayListInteger();
+                            for(int k=0;kz.size();k++)
+                            {
+                                Cell c=s.getCell(z.get(k),j);
+                                arr.add(Integer.parseInt(c.getContents()));
+                        
+                            }   
+                            test.add(arr);
+                        }
+                    }
+                    
+                    ArrayListInteger pred=new ArrayListInteger();
+                    int correct=0;
+                    
+                         for(int j=0;jtest.size();j++)
+                        {
+                            ArrayListInteger t=new ArrayListInteger();
+                            t=test.get(j);
+                            int count1=0;
+                            int count0=0;
+                            for(int k=0;kt.size();k++)
+                            {
+                                if(t.get(k)==1)
+                                {
+                                    count1++;
+                                }
+                                if(t.get(k)==0)
+                                {
+                                    count0++;
+                                }
+                            }
+                            if(count10)
+                            {
+                                pred.add(1);
+                            }
+                            else
+                            {
+                                pred.add(0);
+                            }
+                            if(pred.get(j)==actual.get(j))
+                            {
+                                correct++;
+                            }
+                        }       
+                         int acc=(correct100)(rows-1);
+                         if(accmaxacc)
+                         {
+                             maxacc=acc;
+                             best.clear();
+                             best.addAll(z);
+                         }
+                         z.clear();
+                }
+                 out.println(maxacc);
+                 for(int i=0;ibest.size();i++)
+                 {
+                     out.println(best.get(i));
+                 }
+                 
+            }
+            catch(Exception E)
+            {
+                out.println(E);
+            }
+            
